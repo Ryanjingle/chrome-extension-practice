@@ -4,10 +4,20 @@
 
 //another way of creating an event listener //
 //this way it doesnt beef up the html and all events are within the js file.
-let myLeads = []
+let myLeads = `["www.example.com"]`
+myLeads = JSON.parse(myLeads)
+myLeads.push("www.epiclead.com")
+console.log((myLeads))
+
 const inputEl = document.querySelector("#input-el")
 const inputBtn = document.querySelector("#input-btn")
 const ulEl = document.querySelector("#ul-el")
+
+// saving key value pairs in local storage
+//localStorage.setItem("myLeads", "www.hi.com")
+//console.log(localStorage.getItem("myLeads"))
+//localStorage.clear("myLeads")
+
 
 
 // use const, unless you know the value of the variable will be reassigned later on
@@ -29,7 +39,7 @@ for (i = 0; i < myLeads.length; i++) {
         </a>
     </li>
     `
-    window.open(listItems) //opens in new tab on click
+    //window.open(listItems) //opens in new tab on click
     console.log(listItems)
 }
 ulEl.innerHTML = listItems
