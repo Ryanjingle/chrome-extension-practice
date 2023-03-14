@@ -13,21 +13,27 @@ const ulEl = document.querySelector("#ul-el")
 // use const, unless you know the value of the variable will be reassigned later on
 
 inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value) //.value 
+    myLeads.push(inputEl.value)//.value 
+    inputEl.value = "" //clears input field on click
     renderLeads()
 })
 
 function renderLeads() {
 let listItems = ""
 for (i = 0; i < myLeads.length; i++) {
-    listItems += "<li>" + myLeads[i] + "</li>" //innerHTML, manipulating the DOM using html elements
+    // listItems += "<li><a href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"//innerHTML, manipulating the DOM using html elements
+    listItems += `
+    <li>
+        <a href='${myLeads[i]}'>
+            ${myLeads[i]}
+        </a>
+    </li>
+    `
+    window.open(listItems) //opens in new tab on click
+    console.log(listItems)
 }
 ulEl.innerHTML = listItems
 }
-
-//okay, the reason why we change the innerHTML to outside the loop is because 
-//it comes at a performance cost. Rather than having to manipulate the DOM three times (lthrough the loop)
-//we are defining the list item within js, then calling upon it once outside of the function
 
 
 
@@ -42,6 +48,19 @@ containerEl.innerHTML = "<button onclick='buy()'>Buy!</button>"
 function buy() {
     containerEl.innerHTML = "<p>Thank you for buying!</p>"
 } */
+
+
+// TEMPLATE STRINGS - Line 25
+//Must have backtick, everything else looks like HTML structure
+/* const recipient = "James"
+const sender = "Ryan"
+const email = "Hey " + recipient + "! How is it going? Cheers, Ryan"
+instead of concatanating the entire sentence, we can:
+const email = `Hey ${recipient}! 
+How is it going? 
+Cheers, ${sender}`
+console.log(email) */
+// multi line template string above, this will put each on a seperate link in dev tools
 
 
  
